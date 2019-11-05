@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("https://tinyurl.com/y669r8sy");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-a {
-  color: #00B7FF;
+.indexDescription {
+  color: rgb(0, 0, 0);
+}
+
+#btIndex {
+  width: 200px;
+  height: 80px;
+  font-size: 50px;
+}
+
+#divIndex {
+  margin-top: 20%;
+}
+
+.active {
+  background-color: rgb(107, 107, 107);
+}
+
+#mapid {
+  height: 800px;
+}
+
+#divMap{
+    width: 800px;
+}
+
+#offerDiv{
+    background-color: rgb(221, 217, 255);
+    height: 800px;
+}
+
+#divDescription{
+    margin-top: 5%;
+    background-color: white;
+    height: 600px;
+    width: 1200px;
 }
