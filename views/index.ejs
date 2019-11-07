@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div class="container-fluid p-0 m-0 minheight-100">
+
+    <div id="background-image" class="position-absolute">
+
+      <img src="/images/background.jpg" alt="background image" />
+
+    </div>
+
+    <div id="color-filter" class="position-absolute"></div>
+
+    <main class="d-flex flex-column minheight-100">
+
+      <div class="row w-100 p-0 m-0">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+
+          <a class="navbar-brand" href="#">
+            <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="#">Qui sommes-nous ?</a>
+              <a class="nav-item nav-link" href="/signup">Sign up</a>
+              <a class="nav-item nav-link" href="/login">Login</a>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+
+      <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
+        <div class="col-8 p-0 m-0 text-center">
+          <p class="text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse rem ratione optio, soluta
+            tempora accusamus, sunt fugiat repellat, facilis mollitia rerum repudiandae est. Architecto sint nemo
+            cupiditate ut iste? Eius!</p>
+          <a href="/listing" class="btn btn-custom pl-4 pr-4">FIND</a>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+</body>
+
 </html>

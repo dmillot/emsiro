@@ -12,3 +12,9 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
   gulp.watch('./public/stylesheets/sass/*.scss', gulp.series('sass'));
 });
+
+gulp.task('sass:manual', function () {
+  return gulp.src('./public/stylesheets/sass/**/*.scss')
+   .pipe(sass().on('error', sass.logError))
+   .pipe(gulp.dest('./public/stylesheets'));
+});

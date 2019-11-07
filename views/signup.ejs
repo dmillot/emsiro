@@ -1,40 +1,80 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Signup</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <style>
-        body         { padding-top:80px; }
-    </style>
 </head>
+
 <body>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
+    <div class="container-fluid p-0 m-0 minheight-100">
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+        <div id="background-image" class="position-absolute">
 
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-             <input type="password" class="form-control" name="password">
+            <img src="/images/background.jpg" alt="background image" />
+
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
+        <div id="color-filter" class="position-absolute"></div>
 
-    <hr>
+        <main class="d-flex flex-column minheight-100">
 
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
+            <div class="row w-100 p-0 m-0">
 
-</div>
-</div>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="#">Qui sommes-nous ?</a>
+                            <a class="nav-item nav-link" href="/login">Login</a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+
+            <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
+                <div class="col-3 p-0 m-0 text-white ">
+                    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+                    <!-- LOGIN FORM -->
+                    <form action="/signup" method="post" class="was-validated">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required="required">
+                        </div>
+                        <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control " name="username" required="required">
+                            </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" required="required">
+                        </div>
+
+                        <button type="submit" class="btn btn-custom">Signup</button>
+                    </form>
+
+                    <hr>
+
+                    <p>Already have an account? <a class="a-custom" href="/login">Login</a></p>
+                    <p>Or go <a class="a-custom" href="/">home</a></p>
+
+                </div>
+            </div>
+
+        </main>
+
+    </div>
 </body>
+
 </html>
