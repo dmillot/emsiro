@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('connexion');
 });
 
+
+router.post('/panel', function(req, res, next) {
+  res.render('panelAdmin', { users: [ {"nom": "toto"} ] });
+});
+
 module.exports = router;
