@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Login' });
 });
 
-router.get('/validate', function(req, res, next) {
-  res.render('login', { title: 'Login' });
+router.post('/connected', function(req, res, next) {
+  res.render('index', { title: 'Login' });
 });
 
 

@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('listing', { title: 'Express', elements: [{ id: 1, value: 'premier' },{ id: 2, value: 'second' }] });
 });
 
+router.get('/description', function(req, res, next) {
+  res.render('listing', { title: 'Express', elements: [{ id: 1, value: 'premier' },{ id: 2, value: 'second' }] });
+});
+
 module.exports = router;
