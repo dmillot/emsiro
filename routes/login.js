@@ -37,11 +37,11 @@ router.post('/', function (req, res, next) {
 
 
 
-router.post('/connected', function(req, res, next) {
-  res.render('index', { title: 'Login' });
+  router.post('/connected', function (req, res, next) {
+    res.render('index', { title: 'Login' });
+  });
+
+
 });
 
-
-
-
-module.exports = router;});
+module.exports = router;
