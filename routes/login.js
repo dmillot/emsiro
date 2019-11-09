@@ -19,13 +19,14 @@ router.post('/', function (req, res, next) {
     password: ""
   });
 
-  var FindUser = 'SELECT password FROM user WHERE name = "' + req.body.username + '" LIMIT 1';
+  var FindUser = 'SELECT id, password FROM user WHERE name = "' + req.body.username + '" LIMIT 1';
 
   conn.query(FindUser, function (err, result) {
     if (err) throw err;
     if (result.length > 0) {
       var passwordCorrect = passwordHash.verify(req.body.password, result[0].password);
       if (passwordCorrect) {
+        req.session.userId = result[0].id;
         res.redirect('/');
         return;
       }

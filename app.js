@@ -1,9 +1,13 @@
+/* MIDDLEWARES */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
+
+/* ROUTES */
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
@@ -14,6 +18,8 @@ var listingRouter = require('./routes/listing');
 var favoryRouter = require('./routes/favory');
 var aboutRouter = require('./routes/about');
 var testRouter = require('./routes/test');
+
+
 var app = express();
 
 // view engine setup
@@ -24,6 +30,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: [ '7kIPPzPn5aTf8ER4WV7X94gC036wf5jP' ]
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
