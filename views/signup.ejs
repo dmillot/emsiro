@@ -5,6 +5,13 @@
     <title>Signup</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+              crossorigin="anonymous">
+    </script>
+    <script src="../public/javascripts/mysql.js"></script>
+		
 </head>
 
 <body>
@@ -47,21 +54,21 @@
                     <h1><span class="fa fa-sign-in"></span> Signup</h1>
 
                     <!-- LOGIN FORM -->
-                    <form action="/signup" method="post" class="was-validated">
+                    <form action="" method="POST" class="was-validated">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" required="required">
+                            <input type="email" class="form-control" id="email" name="email" required="required">
                         </div>
                         <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control " name="username" required="required">
+                                <input type="text" class="form-control " id="username" name="username" required="required">
                             </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" required="required">
+                            <input type="password" class="form-control" id="pwd "name="password" required="required">
                         </div>
 
-                        <button type="submit" class="btn btn-custom">Signup</button>
+                        <button id="signup" type="submit" class="btn btn-custom">Signup</button>
                     </form>
 
                     <hr>
