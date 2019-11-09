@@ -7049,3 +7049,26 @@ main {
 
 #mapid {
   height: 100%; }
+
+<<<<<<< HEAD
+#divMap {
+  width: 800px; }
+
+#offerDiv {
+  background-color: #ddd9ff;
+  height: 800px; }
+
+#divDescription {
+  margin-top: 5%;
+  background-color: white;
+  height: 600px;
+  width: 1200px; }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%; }
+=======
+.a-custom {
+  color: #9bd2e5; }
+>>>>>>> 603ec0cd128396ae9cdc97e6068056c04ce63c11

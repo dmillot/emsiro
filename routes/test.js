@@ -2,17 +2,7 @@ var express = require('express');
 var router = express.Router();
 var https = require('https');
 var fetch = require('node-fetch');
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-
-
-
-
-
+ 
 // Call API
  
 router.get('/test/:activityId', function(req, res, next) {
@@ -143,23 +133,5 @@ router.get('/test/:activityId', function(req, res, next) {
  .then(r => r.json())
  .then(data => { console.log(data), res.render('test', { data: data.data.poi.results[0] }) });
 });
-
-
-
-
-
-
-
+ 
 module.exports = router;
-
-// const fetch = require('node-fetch');
-// fetch('http://vps.cours-diiage.com:8080', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json',
-//     },
-//     body: JSON.stringify({query: "{poi { total results { rdf_type }}}"})
-//   })
-//     .then(r => r.json())
-//     .then(data=> console.log(data));

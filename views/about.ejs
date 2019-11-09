@@ -2,16 +2,22 @@
 <html>
 
 <head>
-    <title><%= title %></title>
-    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-        <link rel="icon" type="image/png" href="/images/favicon.png" />
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <title>Emsiro</title>
 </head>
 
 <body>
@@ -42,7 +48,7 @@
                     </button>
                     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="about">Qui sommes-nous ?</a>
+                            <a class="nav-item nav-link">Qui sommes-nous ?</a>
                             <a class="nav-item nav-link" href="signup">Sign up</a>
                             <a class="nav-item nav-link" href="login">Login</a>
                           </div>
@@ -51,25 +57,11 @@
 
             </div>
 
-            <div class="row p-0 m-0 flex-grow-1 d-flex border">
-                <div class="col-4 p-0 m-0 d-flex flex-column bg-white">
-                    <% for(var i=0; i<elements.length; i++) {%>
-                    <a href="description" class="element p-2 border">
-                        <h2>title 10/12/19</h2>
-                        <p class="text-muted"><%= elements[i]['value'] %></p>
-                    </a>
-                    <% } %>
-                </div>
-                <div class="col-8 p-0 m-0">
-                    <div id="mapid"></div>
-                </div>
-            </div>
-
+           
         </main>
 
     </div>
 
-    <script src="/javascripts/main.js"></script>
 </body>
 
 </html>

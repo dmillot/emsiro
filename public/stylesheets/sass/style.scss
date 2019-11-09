@@ -38,3 +38,32 @@ main {
 #mapid {
     height: 100%;
 }
+
+  
+  #divMap{
+      width: 800px;
+  }
+  
+  #offerDiv{
+      background-color: rgb(221, 217, 255);
+      height: 800px;
+  }
+  
+  #divDescription{
+      margin-top: 5%;
+      background-color: white;
+      height: 600px;
+      width: 1200px;
+  }
+  
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+
+.a-custom{
+    color : $custom-color;
+}
+
