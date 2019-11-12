@@ -71,14 +71,17 @@
                             <table id="usertable">
                                 <tr>
                                     <th>Nom</th>
+                                    <th>Email</th>
                                     <th>Supprimer</th>
                                 </tr>
                                 <tbody>
+                                    <% users.forEach( user => { %>
                                     <tr>
-                                        <% users.forEach( user => { %>
-                                        <td><%= user.nom %></td>
-                                        <% }) %>
+                                        <td><%= user.name %></td>
+                                        <td><%= user.email %></td>
+                                        <td><a href="/delete/<%= user.id %>">delete</a></td>
                                     </tr>
+                                    <% }) %>
                                 </tbody>
                             </table>
                         </div>

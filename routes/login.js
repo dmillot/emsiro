@@ -1,5 +1,5 @@
 var express = require('express');
-var mysql = require('mysql');
+var conn = require('../database.js');
 var passwordHash = require('password-hash');
 var router = express.Router();
 
@@ -17,13 +17,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-
-  var conn = mysql.createConnection({
-    database: 'emsiro',
-    host: "127.0.0.1",
-    user: "root",
-    password: ""
-  });
 
   var FindUser = 'SELECT id, password FROM user WHERE name = "' + req.body.username + '" LIMIT 1';
 
