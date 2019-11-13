@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</script>
+    <title>Document</title>
+</head>
+<body>
+        <div class="container-fluid p-0 m-0 minheight-100 text-white">
+
+                <div id="background-image" class="position-fixed ">
+            
+                  <img src="/images/background.jpg" alt="background image" />
+            
+                </div>
+            
+                <div id="color-filter" class="position-fixed"></div>
+            
+                <main class="d-flex flex-column minheight-100">
+            
+                  <div class="row w-100 p-0 m-0">
+            
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+            
+                      <a class="navbar-brand" href="/">
+                        <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+                      </a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                          <a class="nav-item nav-link" href="about">About</a>
+                          <a class="nav-item nav-link" href="signup">Sign up</a>
+                          <a class="nav-item nav-link" href="login">Login</a>
+                          <a class="nav-item nav-link" href="disconnect">Disconnect</a>
+                          <a class="nav-item nav-link" href="pageEditor">Test</a>
+                          <a class="navbar-brand" href="favory">
+                            <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </nav>
+            
+                  </div>
+
+
+
+
+    <%- content %>
+</body>
+</html>
