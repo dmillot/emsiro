@@ -2,10 +2,10 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var logger = require('morgan');
 var favicon = require('serve-favicon');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var logger = require('morgan');
 
 /* ROUTES */
 var indexRouter = require('./routes/index');
@@ -30,10 +30,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: [ '7kIPPzPn5aTf8ER4WV7X94gC036wf5jP' ]
+
+app.use(session({
+  secret : '7kIPPzPn5aTf8ER4WV7X94gC036wf5jP',
+  name : 'sessionId',
+  saveUninitialized : true,
+  resave : true
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
