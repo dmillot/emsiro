@@ -5,11 +5,13 @@ var router = express.Router();
 
 /* GET users page. */
 router.get('/', function (req, res, next) {
+  console.log(req.session.userId);
   if(req.session.userId != null)
   {
     return res.redirect('/');
     
   }
+
 
   res.render('login', {
     title: 'Login'
