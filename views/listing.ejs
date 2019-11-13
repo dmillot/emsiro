@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title><%= title %></title>
+    <title>Listing</title>
     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -44,12 +44,16 @@
                             <a class="nav-item nav-link" href="about">About</a>
                             <a class="nav-item nav-link" href="signup">Sign up</a>
                             <a class="nav-item nav-link" href="login">Login</a>
+
+                        </div>
+
                             <a class="nav-item nav-link" href="disconnect">Disconnect</a>
                             
                             <a class="navbar-brand" href="favory">
                               <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
                             </a>
                           </div>
+
                     </div>
                 </nav>
 
@@ -57,15 +61,45 @@
 
             <div class="row p-0 m-0 flex-grow-1 d-flex border">
                 <div class="col-4 p-0 m-0 d-flex flex-column bg-white">
-                    <% for(var i=0; i<elements.length; i++) {%>
-                    <a href="descriptionOffre" class="element p-2 border">
-                        <h2>title 10/12/19</h2>
-                        <p class="text-muted"><%= elements[i]['value'] %></p>
-                    </a>
+
+                    <% for(var i =0; i<data.length; i++) {%>
+                    <div class="divListingItems">
+                        <a href="detail"><%= data[i].rdfs_label[0].value%></a>                       
+                    </div>
+                    <div class="divListingItems">
+                        <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>
+                    </div>
+                    <% if(data[i].hasDescription.length != 0) {%>
+                        <div class="divListingItems">                                            
+                    </div>
+                    <%}%>
+                    <div class="divListingItems">
+                          
+                    <%if(data[i].hasRepresentation.length != 0) {%>
+                    <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource.length != 0) {%>
+                    <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length != 0){%>
+                    <%for(var tmp = 0; tmp < data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length; tmp++) { %>
+                    <div>
+                        <img id="imgLieu" src="<%= data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator[tmp] %>"
+                            alt="<%= data[i].rdfs_label[0].value %>">
+                    </div>
                     <% } %>
+                    <% } %>
+                    <% } %>
+                    <% } %>
+
+                    <% console.log(data[i].hasRepresentation); %>
+                </div>
+                <%}%>
                 </div>
                 <div class="col-8 p-0 m-0">
-                    <div id="mapid"></div>
+                    <div id="mapid">
+                        <%for(i = 0; i < data[i].isLocatedAt.length; i++){%>
+
+                            <%=L.marker([data[i].isLocatedAt[0].schema_geo[0].schema_latitude,data[i].isLocatedAt[0].schema_geo[0].schema_longitude]).addTo(mymap);%>
+                        <%}%>
+                       
+                    </div>
                 </div>
             </div>
 
@@ -74,6 +108,7 @@
     </div>
 
     <script src="/javascripts/main.js"></script>
+    
 </body>
 
 </html>
