@@ -5,7 +5,7 @@ var fetch = require('node-fetch');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.session.userId);
+  res.locals.session = (req.session.userId ? true : false )
   res.render('index', { title: 'Emsiro' });
 });
 
