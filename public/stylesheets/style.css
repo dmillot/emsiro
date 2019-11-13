@@ -7050,7 +7050,6 @@ main {
 #mapid {
   height: 100%; }
 
-
 #divMap {
   width: 800px; }
 
@@ -7072,3 +7071,9 @@ table {
 .a-custom {
   color: #9bd2e5; }
 
+#imgLieu {
+  height: 250px; }
+
+.divListingItems {
+  border: black;
+  border-block: 2px; }
