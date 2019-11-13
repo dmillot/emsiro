@@ -33,9 +33,11 @@
           </button>
           <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="about">Qui sommes-nous ?</a>
-              <a class="nav-item nav-link" href="signup">Sign up</a>
-              <a class="nav-item nav-link" href="login">Login</a>
+              <a class="nav-item nav-link" href="about">About</a>
+              <% console.log(session)%> <% if (session == false){ %><a class="nav-item nav-link deco" href="signup">Sign up</a>
+              <a class="nav-item nav-link " href="login">Login</a>
+              <% } else{ %><a class="nav-item nav-link " href="disconnect">Disconnect</a><% } %>
+              <a class="nav-item nav-link" href="pageEditor">Test</a>
               <a class="navbar-brand" href="favory">
                 <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
               </a>

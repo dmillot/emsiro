@@ -7,7 +7,25 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
+    
 }).addTo(mymap);
+
+var marker = L.marker([data[i].isLocatedAt[0].schema_geo[0].schema_latitude,data[i].isLocatedAt[0].schema_geo[0].schema_latitude.schema_longitude]).addTo(mymap);
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
