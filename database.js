@@ -6,10 +6,10 @@ try {
 
     //db connection
     var connection = mysql.createConnection({
-        database: 'emsiro',
-        host: "127.0.0.1",
-        user: "root",
-        password: ""
+        database: 'web1',
+        host: "nico.cours-diiage.com",
+        user: "web1",
+        password: "D2019"
     });
 
     connection.connect(function (err) {
