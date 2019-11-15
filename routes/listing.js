@@ -84,7 +84,7 @@ router.get("/", function(req, res, next) {
     query: `
       
     { 
-      poi 
+      poi (size:100)
               { 
               results {
                 _uri,
