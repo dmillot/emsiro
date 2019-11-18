@@ -9,7 +9,6 @@ var logger = require('morgan');
 
 /* ROUTES */
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 var adminRouter = require('./routes/admin');
 var loginRouter = require('./routes/auth/login');
@@ -44,7 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 app.use('/admin', adminRouter);
 app.use('/login', loginRouter);
