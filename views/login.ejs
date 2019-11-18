@@ -53,9 +53,9 @@
                 <div class="col-3 p-0 m-0 text-white ">
 
                     <!-- ERROR MESSAGE -->
-                    <% if (locals.error) { %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <%= locals.error %>
+                    <% if (locals.message) { %>
+                    <div class="alert alert-<%= locals.type %> alert-dismissible fade show" role="alert">
+                        <%= locals.message %>
                     </div>
                     <% } %>
 

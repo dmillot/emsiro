@@ -1,32 +1,37 @@
 var express = require('express');
-var conn = require('../database.js');
+var conn = require('../database');
 var passwordHash = require('password-hash');
 var router = express.Router();
 
 /* GET users page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
-  if(req.session.userId != null)
-  {
-    res.redirect('/');
-    return;
-  }
-  res.render('signup', { title: 'signup' });
+    if (req.session.userId != null)
+        return res.redirect('/');
+
+    res.render('signup');
 });
 
-router.post('/', function(req, res, next){
+router.post('/', function (req, res, next) {
 
-  var CreateUser = 'INSERT INTO user (name, password, email) VALUES ("'+ req.body.username +'","'+ passwordHash.generate(req.body.password) +'","'+ req.body.email +'")';
+    var queryCreateUser = 'INSERT INTO user (name, password, email) VALUES (?, ?, ?)';
+    
+    try {
+        var parameters = [
+            req.body.username,
+            passwordHash.generate(req.body.password),
+            req.body.email
+        ];
 
-  conn.query(CreateUser, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-
-  res.redirect('login');
+        conn.query(queryCreateUser, parameters, function (err, result) {
+            if (err) throw err;
+            if (result.affectedRows == 1)
+                return res.render('login', { message: "User Registration Successful! Please Login.", type: 'success' })
+        });
+    } catch (err) {
+        return res.render('login', { message: err, type: 'danger' })
+    }
 
 });
-
-
 
 module.exports = router;

@@ -1,5 +1,6 @@
 var express = require('express');
 var conn = require('../database');
+var query = require('../query');
 var passwordHash = require('password-hash');
 var router = express.Router();
 
@@ -21,30 +22,20 @@ router.post('/', function (req, res, next) {
 	var queryUserExists = 'SELECT confirmInscription FROM user WHERE id = ? LIMIT 1';
 	var queryCheckUserPassword = 'SELECT id, password FROM user WHERE id = ? LIMIT 1';
 
-	function querySQL(sql, parameters = null) {
-		return new Promise((resolve, reject) => {
-			conn.query(sql, parameters, (err, results) => {
-				if (err)
-					return reject(err);
-				resolve(results);
-			});
-		});
-	}
-
-	const promise = querySQL(queryFindUser, [req.body.username]);
+	const promise = query(queryFindUser, conn, [req.body.username]);
 
 	promise
 		.then(rows => {
 			if (rows.length > 0) {
 				userId = rows[0].id;
-				return querySQL(queryUserExists, [userId]);
+				return query(queryUserExists, conn, [userId]);
 			}
 
 			throw "This user doesn't exist.";
 		})
 		.then(rows => {
 			if (rows[0].confirmInscription)
-				return querySQL(queryCheckUserPassword, [userId]);
+				return query(queryCheckUserPassword, conn, [userId]);
 
 			throw "Your registration has not been validated by an administrator.";
 		})
@@ -57,8 +48,7 @@ router.post('/', function (req, res, next) {
 			throw "Incorrect username or password.";
 		})
 		.catch(err => {
-			console.log(err);
-			res.render('login', { error: err });
+			res.render('login', { message: err, type: 'danger' });
 		})
 
 });
