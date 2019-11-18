@@ -79,12 +79,80 @@ router.get("/detail", function(req, res, next) {
 
 
 router.get("/", function(req, res, next) {
-  console.log();
+  console.log('get');
   var dataString = JSON.stringify({
     query: `
       
     { 
-      poi (size:10)
+      poi               { 
+              results {
+                _uri,
+                rdfs_label {
+                  value
+                },
+                 hasRepresentation{
+                
+                  ebucore_hasRelatedResource{
+                    ebucore_locator
+                  }
+                  } ,  
+                takesPlaceAt{
+                  startDate,
+                  endDate
+                },
+                isLocatedAt {
+                  schema_address {
+                    schema_streetAddress,
+                    schema_postalCode,
+                    schema_addressLocality
+                  },
+                  schema_geo{
+                    schema_latitude schema_longitude
+                  }
+                },
+                hasDescription {
+                  shortDescription {
+                    value,
+                    lang
+                  },
+                  dc_description {
+                    lang,
+                    value
+                  }
+                      
+                }
+              }
+            }
+          }
+      
+          `
+  });
+  fetch("http://vps.cours-diiage.com:8080", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: dataString
+  })
+    .then(r => r.json())
+    .then(data => {
+      res.render("listing", { data: data.data.poi.results });
+    });
+});
+
+
+router.post("/", function(req, res, next) {
+  console.log('post');
+
+  console.log(req.body.sliderPoi);
+  
+  var dataString = JSON.stringify({
+            // ` + res.locals.sliderPOI + `
+    query: `
+      
+    { 
+      poi (size:` + req.body.sliderPoi + `)
               { 
               results {
                 _uri,
