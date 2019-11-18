@@ -38,9 +38,10 @@
                             <a class="nav-item nav-link" href="about">About</a>
                             <a class="nav-item nav-link" href="signup">Sign up</a>
                             <a class="nav-item nav-link" href="login">Login</a>
-                            
+
                             <a class="navbar-brand" href="favory">
-                              <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+                                <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
+                                    alt="">
                             </a>
                         </div>
                     </div>
@@ -50,6 +51,14 @@
 
             <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
                 <div class="col-3 p-0 m-0 text-white ">
+
+                    <!-- ERROR MESSAGE -->
+                    <% if (locals.error) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= locals.error %>
+                    </div>
+                    <% } %>
+
                     <h1><span class="fa fa-sign-in"></span> Login</h1>
 
                     <!-- LOGIN FORM -->

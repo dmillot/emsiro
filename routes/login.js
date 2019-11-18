@@ -1,53 +1,65 @@
 var express = require('express');
-var conn = require('../database.js');
+var conn = require('../database');
 var passwordHash = require('password-hash');
 var router = express.Router();
 
-/* GET users page. */
+/* LOGIN FORM */
 router.get('/', function (req, res, next) {
-  console.log(req.session.userId);
-  if(req.session.userId != null)
-  {
-    return res.redirect('/');
-    
-  }
 
+	if (req.session.userId != null) {
+		return res.redirect('/');
+	}
 
-  res.render('login', {
-    title: 'Login'
-  });
+	res.render('login');
 });
 
+/* LOGIN FORM SUBMIT */
 router.post('/', function (req, res, next) {
 
-  var FindUser = 'SELECT id, password, confirmInscription FROM user WHERE name = "' + req.body.username + '" LIMIT 1';
- 
-  conn.query(FindUser, function (err, result) {
-    if (err) throw err;
-  
-    if (result.length > 0) {
-      var passwordCorrect = passwordHash.verify(req.body.password, result[0].password);
-    
-      if (passwordCorrect) {
-       
-        if (result[0].confirmInscription ==1)
-        {
-          req.session.userId = result[0].id;
-          return res.redirect('/');
-        } 
-      }
-    }
+	var userId = null;
+	var queryFindUser = 'SELECT id FROM user WHERE name = ? LIMIT 1';
+	var queryUserExists = 'SELECT confirmInscription FROM user WHERE id = ? LIMIT 1';
+	var queryCheckUserPassword = 'SELECT id, password FROM user WHERE id = ? LIMIT 1';
 
-    res.redirect('/signup');
+	function querySQL(sql, parameters = null) {
+		return new Promise((resolve, reject) => {
+			conn.query(sql, parameters, (err, results) => {
+				if (err)
+					return reject(err);
+				resolve(results);
+			});
+		});
+	}
 
-  });
+	const promise = querySQL(queryFindUser, [req.body.username]);
 
+	promise
+		.then(rows => {
+			if (rows.length > 0) {
+				userId = rows[0].id;
+				return querySQL(queryUserExists, [userId]);
+			}
 
+			throw "This user doesn't exist.";
+		})
+		.then(rows => {
+			if (rows[0].confirmInscription)
+				return querySQL(queryCheckUserPassword, [userId]);
 
-  router.post('/connected', function (req, res, next) {
-    res.render('index', { title: 'Login' });
-  });
+			throw "Your registration has not been validated by an administrator.";
+		})
+		.then(rows => {
+			if (passwordHash.verify(req.body.password, rows[0].password)){
+				req.session.userId = rows[0].id;
+				return res.redirect('/');
+			}
 
+			throw "Incorrect username or password.";
+		})
+		.catch(err => {
+			console.log(err);
+			res.render('login', { error: err });
+		})
 
 });
 
