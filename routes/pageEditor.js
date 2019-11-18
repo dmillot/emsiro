@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var conn = require('../database');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,10 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  //var Addcode = "ALTER TABLE `view`  (`name`, `codeHtml`, `query`, `idCategory`, `pageCategory`, `updated_at`) VALUES ( 'title' , "+req.body.mytextarea+", 'query', '0', 'Index', 'CURRENT_TIMESTAMP' );";
+  var Addcode = "ALTER TABLE `view`   VALUES ( 'title' , "+req.body.mytextarea+", 'query', '0', 'Index', 'CURRENT_TIMESTAMP' );";
 
-  res.redirect('preview',{content:req.body.mytextarea});
-
+conn.query("INSERT INTO view (`name`, `codeHtml`, `updated_at`) VALUES (?,?,CURRENT_TIMESTAMP)",[req.body.NamePage,req.body.mytextarea],function (err,result) {
+  if(err) throw err;  
+  // console.log(result);
+  res.render('preview',{content:req.body.mytextarea});
+});
 });
 
 module.exports = router;
