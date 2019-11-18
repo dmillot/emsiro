@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
+var types = require("../public/javascripts/type");
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -10,6 +11,7 @@ var fetch = require("node-fetch");
 router.get("/description", function(req, res, next) {
   res.render("listing");
 });
+
 
 router.get("/detail", function(req, res, next) {
   console.log();
@@ -77,9 +79,8 @@ router.get("/detail", function(req, res, next) {
     });
 });
 
-
 router.get("/", function(req, res, next) {
-  console.log('get');
+  console.log("get");
   var dataString = JSON.stringify({
     query: `
       
@@ -141,21 +142,52 @@ router.get("/", function(req, res, next) {
     });
 });
 
-
 router.post("/", function(req, res, next) {
-  console.log('post');
+  console.log("post");
 
   console.log(req.body.sliderPoi);
-  
+
   var dataString = JSON.stringify({
-            // ` + res.locals.sliderPOI + `
-    query: `
+    // ` + res.locals.sliderPOI + `
+    query:
+      `
       
     { 
-      poi (size:` + req.body.sliderPoi + `)
-              { 
+      poi (size:` +
+      req.body.sliderPoi +
+      ` ,filters:[{
+        
+        isLocatedAt: {
+          schema_address:{
+            schema_addressLocality:{_in:["Brest"]} 
+          }
+        }       
+      },
+      
+      {
+      rdf_type: {_in: [
+          "https://www.datatourisme.gouv.fr/ontology/core#Festival",               
+          "https://www.datatourisme.gouv.fr/ontology/core#ShowEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CulturalEvent",   
+          "https://www.datatourisme.gouv.fr/ontology/core#EntertaimnentAndEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SportsEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#ChildrensEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SaleEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#TheaterEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CircusEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SocialEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#BusinessEvent"
+
+     
+          ] 
+        }
+    }]
+      ) 
+            { 
+                
               results {
                 _uri,
+                rdf_type,
                 rdfs_label {
                   value
                 },
@@ -192,8 +224,8 @@ router.post("/", function(req, res, next) {
                 }
               }
             }
-          }
-      
+          }                      
+          
           `
   });
   fetch("http://vps.cours-diiage.com:8080", {
@@ -206,7 +238,10 @@ router.post("/", function(req, res, next) {
   })
     .then(r => r.json())
     .then(data => {
-      res.render("listing", { data: data.data.poi.results });
+      res.render("listing", {
+        data: data.data.poi.results
+        // , type: types.allType()
+      });
     });
 });
 

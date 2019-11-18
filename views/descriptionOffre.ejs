@@ -68,6 +68,18 @@
                              
                             <%= data[i].hasDescription[0].shortDescription[0].value%>
                         </div>
+                        <% if(data[i].hasDescription.length != 0) {%>
+                            <div>
+                            </div>
+                            <%}%>                                          
+                            <%if(data[i].hasRepresentation.length != 0) {%>
+                            <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource.length != 0) {%>
+                            <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length != 0){%>
+                                <img src=" <%= data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator%>" alt="">
+                               
+                            <% } %>
+                            <% } %>
+                            <% } %>
                         <%}%>
                         <%}%>
 
