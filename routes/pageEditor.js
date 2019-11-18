@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   //var Addcode = "ALTER TABLE `view`  (`name`, `codeHtml`, `query`, `idCategory`, `pageCategory`, `updated_at`) VALUES ( 'title' , "+req.body.mytextarea+", 'query', '0', 'Index', 'CURRENT_TIMESTAMP' );";
 
-  res.render('preview',{content:req.body.mytextarea});
+  res.redirect('preview',{content:req.body.mytextarea});
 
 });
 
