@@ -10,7 +10,7 @@ var logger = require('morgan');
 /* ROUTES */
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
-var adminRouter = require('./routes/admin');
+var adminRouter = require('./routes/admin/admin.js');
 var loginRouter = require('./routes/auth/login');
 var registerRouter = require('./routes/auth/register');
 var listingRouter = require('./routes/listing');
