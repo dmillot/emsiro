@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Emsiro</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="../public/javascripts/mysql.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid p-0 m-0 minheight-100">
+
+        <div id="background-image" class="position-absolute">
+
+            <img src="/images/background.jpg" alt="background image" />
+
+        </div>
+
+        <div id="color-filter" class="position-absolute"></div>
+
+        <main class="d-flex flex-column minheight-100">
+
+            <div class="row w-100 p-0 m-0">
+
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="about">About</a>
+                            <% if (!locals.session){ %><a class="nav-item nav-link deco"
+                                href="signup">Sign up</a>
+                            <a class="nav-item nav-link " href="login">Login</a>
+                            <% } else { %><a class="nav-item nav-link " href="disconnect">Disconnect</a><% } %>
+                            <a class="nav-item nav-link" href="pageEditor">Test</a>
+                            <a class="navbar-brand" href="favory">
+                                <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
+                                    alt="">
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
