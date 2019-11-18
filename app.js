@@ -12,12 +12,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 var adminRouter = require('./routes/admin');
-var loginRouter = require('./routes/login');
-var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/auth/login');
+var registerRouter = require('./routes/auth/register');
 var listingRouter = require('./routes/listing');
 var favoryRouter = require('./routes/favory');
 var aboutRouter = require('./routes/about');
-var disconnectRouter = require ('./routes/disconnect');
+var disconnectRouter = require ('./routes/auth/disconnect');
 var pageEditorRouter = require ('./routes/pageEditor');
 
 

@@ -1,5 +1,5 @@
 var express = require('express');
-var conn = require('../database');
+var conn = require('../../database');
 var passwordHash = require('password-hash');
 var router = express.Router();
 

@@ -1,6 +1,6 @@
 var express = require('express');
-var conn = require('../database');
-var query = require('../query');
+var conn = require('../../database');
+var query = require('../../query');
 var passwordHash = require('password-hash');
 var router = express.Router();
 
