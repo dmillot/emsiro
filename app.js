@@ -17,7 +17,6 @@ var registerRouter = require('./routes/register');
 var listingRouter = require('./routes/listing');
 var favoryRouter = require('./routes/favory');
 var aboutRouter = require('./routes/about');
-var testRouter = require('./routes/test');
 var disconnectRouter = require ('./routes/disconnect');
 var pageEditorRouter = require ('./routes/pageEditor');
 
@@ -53,7 +52,6 @@ app.use('/signup', registerRouter);
 app.use('/listing', listingRouter);
 app.use('/favory', favoryRouter);
 app.use('/about', aboutRouter);
-app.use('/test', testRouter);
 app.use('/disconnect',disconnectRouter);
 app.use('/pageEditor', pageEditorRouter);
 
