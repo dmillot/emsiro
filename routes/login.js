@@ -36,9 +36,10 @@ router.post('/', function (req, res, next) {
           return res.redirect('/');
         } 
       }
-    }
 
-    res.redirect('/signup');
+    }
+  res.redirect('/signup');
+  
 
   });
 
