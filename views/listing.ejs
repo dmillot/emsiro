@@ -16,7 +16,7 @@
 
 <body>
 
-    <div class="container-fluid p-0 m-0">
+    <div class="container-fluid p-0 m-0" id="divCont">
 
         <div id="background-image" class="position-absolute">
 
@@ -61,23 +61,44 @@
 
     </div>
 
-    <div class="row p-0 m-0 flex-grow-1 d-flex border">
-        <div class="col-4 p-0 m-0 d-flex flex-column bg-white">
+    
+
+    </div>
+
+    <div class="flex-grow-1 d-flex mt-3">
+           
+        <div class="form-group col-md-4">                   
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose an event</option>
+                      <option>
+                          <% for(var i = 0; i<data.length; i++) {%>
+                                <%= data[i].rdfs_label[0].value%>
+                        <%}%>
+                      </option>
+                    </select>
+
+            <div>
+                <input type="range" name="sliderPOI" min="1" max="100" id="sliderPoi">
+                <p>Number of points : <span id="nbOfPoint"></span> </p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row p-0 m-0 flex-grow-1 d-flex border mt-5">     
+        <div class="col-4 p-0 m-0 d-flex flex-column bg-white" id="divList">
 
             <% for(var i =0; i<data.length; i++) {%>
             <div class="divListingItems">
                 <a href="detail"><%= data[i].rdfs_label[0].value%></a>
-            </div>
-            <div class="divListingItems">
+          
                 <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>
             </div>
             <% if(data[i].hasDescription.length != 0) {%>
-            <div class="divListingItems">
+            <div>
             </div>
-            <%}%>
-                    <div class="divListingItems">
-                          
-                    <%if(data[i].hasRepresentation.length != 0) {%>
+            <%}%>                                          
+            <%if(data[i].hasRepresentation.length != 0) {%>
             <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource.length != 0) {%>
             <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length != 0){%>
             <%for(var tmp = 0; tmp < data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length; tmp++) { %>
@@ -89,21 +110,14 @@
             <% } %>
             <% } %>
             <% } %>
-            <% } %>
-
-
-        </div>
+            <% } %>      
         <%}%>
                 </div>
-
                 <div class="col-8 p-0 m-0">                   
-                    <div id="mapid">
-                       
+                    <div id="mapid">                      
                         <script >
                             //map
                             var mymap = L.map('mapid').setView([47, 3], 6);
-
-
                             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia2lnYSIsImEiOiJjazIwamJ5ZjYxNWo1M2VxdHB0bzB2YXF6In0.whFAIc_yi0aWiiCw2tSnPw', {
                                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                                 maxZoom: 18,

@@ -7070,9 +7070,13 @@ table {
 
 .a-custom {
   color: #9bd2e5; }
-<<<<<<< HEAD
-=======
 
 #imgLieu {
   height: 250px; }
->>>>>>> b80954ba3278f1d2b7edfa333174155cc12c84e9
+
+.divListingItems {
+  border-left: 6px solid;
+  background-color: #ffd085; }
+
+#divCont {
+  margin-top: 20%; }
