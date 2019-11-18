@@ -64,27 +64,45 @@
     
 
     </div>
+    
+    <form method="post" action="/listing" id="form">
 
-    <div class="flex-grow-1 d-flex mt-3">
-           
-        <div class="form-group col-md-4">                   
-                    <select id="inputState" class="form-control">
-                      <option selected>Choose an event</option>
-                      <option>
-                          <% for(var i = 0; i<data.length; i++) {%>
-                                <%= data[i].rdfs_label[0].value%>
-                        <%}%>
-                      </option>
-                    </select>
+        <div class="flex-grow-1 d-flex mt-3">
+    
+            <div class="form-group col-md-4">                   
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose an event</option>
+                            <option>
+                                <% for(var i = 0; i<data.length; i++) {%>
+                                    <%= data[i].rdfs_label[0].value%>
+                            <%}%>
+                            </option>
+                        </select>
+    
+                        <div>
+    
+                            <input name="sliderPoi" id="sliderPoi" type="range" min=1 max=100 onchange="myFunction()"/>
+                            <p>Number of points : <span id="ex6SliderVal"></span></p>
+                            <script>
+                            
+                                function myFunction() {
+                                    document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
+                                }
 
-            <div>
-                <input type="range" name="sliderPOI" min="1" max="100" id="sliderPoi">
-                <p>Number of points : <span id="nbOfPoint"></span> </p>
+                                $(myFunction);
+
+                                document.getElementById("sliderPoi").onmouseup = function () {
+                                    document.getElementById("form").submit();
+                                }
+
+                            </script>
+                        </div>
+    
             </div>
+    
+    
         </div>
-
-
-    </div>
+    </form>
     <div class="row p-0 m-0 flex-grow-1 d-flex border mt-5">     
         <div class="col-4 p-0 m-0 d-flex flex-column bg-white" id="divList">
 
