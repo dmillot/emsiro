@@ -2,7 +2,8 @@ tinymce.init({
     selector: '#mytextarea',
     height: 550,
     plugins: 'print preview fullpage powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker imagetools textpattern noneditable help formatpainter permanentpen pageembed charmap mentions quickbars linkchecker emoticons',
-    menu : { // this is the complete default configuration
+  
+    menu : { 
       file   : {title : 'File'  , items : 'save newdocument | print'},
       edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
       insert : {title : 'Insert', items : 'link media | template hr'},
