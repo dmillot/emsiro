@@ -7074,9 +7074,12 @@ table {
 #imgLieu {
   height: 250px; }
 
+#divList {
+  overflow: scroll;
+  max-height: 100vh; }
+
 .divListingItems {
-  border-left: 6px solid;
-  background-color: #ffd085; }
+  border-left: 6px solid; }
 
 #divCont {
   margin-top: 20%; }

@@ -72,14 +72,17 @@ main {
 }
 
 
-
+#divList{
+   overflow: scroll;
+   max-height: 100vh;
+}
 
 .divListingItems{
     border-left: 6px solid;
-    background-color: rgb(255, 208, 133);
 }
 
 
 #divCont{
     margin-top: 20%;
 }
+

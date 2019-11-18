@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
+var types = require("../public/javascripts/type");
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -77,17 +78,37 @@ router.get("/detail", function(req, res, next) {
     });
 });
 
-
 router.get("/", function(req, res, next) {
   console.log();
   var dataString = JSON.stringify({
     query: `
       
     { 
-      poi (size:10)
+      poi (size:50,filters:[{
+        rdf_type: {_in: [
+            "https://www.datatourisme.gouv.fr/ontology/core#Festival",               
+            "https://www.datatourisme.gouv.fr/ontology/core#ShowEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#CulturalEvent",   
+            "https://www.datatourisme.gouv.fr/ontology/core#EntertaimnentAndEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#SportsEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#ChildrensEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#SaleEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#TheaterEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#CircusEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#SocialEvent",
+            "https://www.datatourisme.gouv.fr/ontology/core#BusinessEvent"
+
+       
+            ] 
+       	 }
+      }]
+      )
+       
               { 
+                
               results {
                 _uri,
+                rdf_type,
                 rdfs_label {
                   value
                 },
@@ -126,6 +147,10 @@ router.get("/", function(req, res, next) {
             }
           }
       
+        
+        
+          
+      
           `
   });
   fetch("http://vps.cours-diiage.com:8080", {
@@ -138,7 +163,10 @@ router.get("/", function(req, res, next) {
   })
     .then(r => r.json())
     .then(data => {
-      res.render("listing", { data: data.data.poi.results });
+      res.render("listing", {
+        data: data.data.poi.results
+        // , type: types.allType()
+      });
     });
 });
 
