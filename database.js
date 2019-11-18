@@ -12,10 +12,6 @@ try {
         password: "D2019"
     });
 
-    connection.connect(function (err) {
-        if (err) throw err;
-    });
-
 } catch (err) {
     console.log(err);
 }

@@ -62,21 +62,48 @@
     </div>
 
 
-
-
     </div>
-    <div class="row p-0 m-0 flex-grow-1 d-flex border">
+    <form method="post" action="/listing" id="form">
+
+        <div class="flex-grow-1 d-flex mt-3">
+
+            <div class="form-group col-md-4">
+
+                <div id="divForm">
+                    <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
+                        onchange="myFunction()" />
+                    <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
+
+                    <script>
+                        function myFunction() {
+                            document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
+                        }
+                        $(myFunction);
+                        document.getElementById("sliderPoi").onmouseup = function () {
+                            document.getElementById("form").submit();
+                        }
+                    </script>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </form>
+    <div class="row p-0 m-0 flex-grow-1 d-flex border mt-5" id="divContainerListing">
         <div class="col-4 p-0 m-0 d-flex flex-column bg-white" id="divList">
 
             <% for(var i =0; i<data.length; i++) {%>
             <div class="divListingItems">
-                    <div class="card w-100">
-                            <div class="card-body">
-                              <h5 class="card-title"><%= data[i].rdfs_label[0].value%></h5>
-                              <a href="detail" class="btn btn-primary">More details</a>
-                            </div>
-                          </div>                        
-                        </div>
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= data[i].rdfs_label[0].value%></h5>
+                        <a href="listing/detail" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
             <%}%>
                 </div>
                 <div class="col-8 p-0 m-0">                   
@@ -96,8 +123,8 @@
             <% if (data.length != 0) {%>
             var marker =
                                         L.marker([<%=data[i].isLocatedAt[0].schema_geo[0].schema_latitude %>,<%=data[i].isLocatedAt[0].schema_geo[0].schema_longitude %>]).addTo(mymap);
-                                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br><%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
-                                    marker.bindPopup(popup);
+                                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress %> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
+                                            marker.bindPopup(popup);
             <% }%>
             <% }%>
                         </script>

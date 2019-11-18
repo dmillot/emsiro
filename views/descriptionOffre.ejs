@@ -75,7 +75,8 @@
                             <%if(data[i].hasRepresentation.length != 0) {%>
                             <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource.length != 0) {%>
                             <%if(data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator.length != 0){%>
-                                <%= data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator%>
+                                <img src=" <%= data[i].hasRepresentation[0].ebucore_hasRelatedResource[0].ebucore_locator%>" alt="">
+                               
                             <% } %>
                             <% } %>
                             <% } %>
