@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <script src="https://cdn.tiny.cloud/1/4p6anidd0wy5a6ii2c523w1nswg3umbct6ror8msx1od2kh7/tinymce/5/tinymce.min.js"></script> 
-  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+    <script
+        src="https://cdn.tiny.cloud/1/4p6anidd0wy5a6ii2c523w1nswg3umbct6ror8msx1od2kh7/tinymce/5/tinymce.min.js"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
-        <div class="container-fluid p-0 m-0 minheight-100">
+    <div class="container-fluid p-0 m-0 minheight-100">
 
-                <div id="background-image" class="position-absolute fixed-top">
-            
-                  <img src="/images/background.jpg" alt="background image" />
-            
-                </div>
-            
-                <div id="color-filter" class="position-absolute"></div>
-            
-                <main class="d-flex flex-column minheight-100">
-            
-                  <div class="row w-100 p-0 m-0">
-            
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-            
-                      <a class="navbar-brand" href="/">
+        <div id="background-image" class="position-absolute fixed-top">
+
+            <img src="/images/background.jpg" alt="background image" />
+
+        </div>
+
+        <div id="color-filter" class="position-absolute"></div>
+
+        <main class="d-flex flex-column minheight-100">
+
+            <div class="row w-100 p-0 m-0">
+
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+
+                    <a class="navbar-brand" href="/">
                         <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
-                      </a>
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                    </button>
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                          <a class="nav-item nav-link" href="about">About</a>
-                          <a class="nav-item nav-link" href="signup">Sign up</a>
-                          <a class="nav-item nav-link" href="login">Login</a>
-                          <a class="nav-item nav-link" href="disconnect">Disconnect</a>
-                          <a class="nav-item nav-link" href="pageEditor">Test</a>
-                          <a class="navbar-brand" href="favory">
-                            <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
-                          </a>
+                            <a class="nav-item nav-link" href="about">About</a>
+                            <a class="nav-item nav-link" href="signup">Sign up</a>
+                            <a class="nav-item nav-link" href="login">Login</a>
+                            <a class="nav-item nav-link" href="disconnect">Disconnect</a>
+                            <a class="nav-item nav-link" href="pageEditor">Test</a>
+                            <a class="navbar-brand" href="favory">
+                                <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
+                                    alt="">
+                            </a>
                         </div>
                       </div>
                     </nav>
@@ -63,9 +68,45 @@
               </div>
     <textarea id="mytextarea" name="mytextarea"></textarea>
 
-</div>
-</div>
-  </form>
-  <script src="/javascripts/tinymce.js"></script>
+            </div>
+            <h1 class="text-white text-center"><span class="fa fa-plus"></span> Edit Page</h1>
+            <form action="" method="post">
+                <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center text-white">
+                    <div class="col-8 p-0 m-0 text-center">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="NamePage">Name of Page</label>
+                                <input type="text" class="form-control" id="NamePage">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Type">Type</label>
+                                <select id="Type" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>Type Index</option>
+                                    <option>Type Desciption</option>
+                                    <option>Type About</option>
+                                    <option>Type Sign up</option>
+                                    <option>Type Login</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Libellé">Libellé</label>
+                                <input type="text" class="form-control" id="Libellé">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="Filter">Filter</label>
+                                <select id="Filter" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <textarea id="mytextarea" name="mytextarea"></textarea>
+
+                    </div>
+                </div>
+            </form>
+            <script src="/javascripts/tinymce.js"></script>
 </body>
+
 </html>
