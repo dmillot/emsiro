@@ -143,7 +143,7 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-  console.log("post");
+  console.log(req.body.searchBar);
 
   console.log(req.body.sliderPoi);
 
@@ -156,12 +156,11 @@ router.post("/", function(req, res, next) {
       poi (size:` +
       req.body.sliderPoi +
       ` ,filters:[{
-        
         isLocatedAt: {
           schema_address:{
-            schema_addressLocality:{_in:["Brest"]} 
+            schema_addressLocality:{_in:[`+req.body.searchBar+`]} 
           }
-        }       
+        }
       },
       
       {

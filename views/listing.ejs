@@ -71,22 +71,19 @@
 
                 <div id="divForm">
                     <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
-                        onchange="myFunction()" />
+                        onchange="myFunction()"/>
+                        
+                    <input type="text" name="searchBar" placeholder="region" id="searchBar">
+                    <input type="submit" class="btn btn-primary" value="Rechercher">
                     <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
 
                     <script>
                         function myFunction() {
                             document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
                         }
-                        $(myFunction);
-                        document.getElementById("sliderPoi").onmouseup = function () {
-                            document.getElementById("form").submit();
-                        }
                     </script>
 
                 </div>
-
-
             </div>
 
 
