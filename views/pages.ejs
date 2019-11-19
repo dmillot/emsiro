@@ -1,106 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<% include layouts/header %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-    <script src="../public/javascripts/main.js"></script>
-    <title>Manage Pages</title>
-</head>
+<div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
 
-<body>
-
-    <div class="container-fluid m-0 p-0 d-flex justify-content-center align-items-center">
-        <div id="background-image" class="position-absolute">
-
-            <img src="/images/background.jpg" alt="background image" />
-
-        </div>
-
-
-        <div class="container-fluid p-0 m-0 minheight-100">
-
-            <div id="background-image" class="position-absolute">
-
-                <img src="/images/background.jpg" alt="background image" />
-
-            </div>
-
-            <div id="color-filter" class="position-absolute"></div>
-
-            <main class="d-flex flex-column minheight-100">
-
-                <div class="row w-100 p-0 m-0">
-
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-
-                        <a class="navbar-brand" href="#">
-                            <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top"
-                                alt="">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                                <a class="nav-item nav-link" href="about">About</a>
-                                <a class="nav-item nav-link" href="signup">Sign up</a>
-                                <a class="nav-item nav-link" href="login">Login</a>
-                                <a class="nav-item nav-link" href="disconnect">Disconnect</a>
-                                
-                                <a class="navbar-brand" href="favory">
-                                  <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </nav>
-
-                </div>
-
-                <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
-
-                    <div class="col-3 p-0 m-0 text-center text-white">
-                        <div id="pages">
-                            <table id="pagestable">
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>codeHtml</th>
-                                    <th>Supprimer</th>
-                                </tr>
-                                <tbody>
-                                    <% pages.forEach( pages => { %>
-                                    <tr>
-                                        <td><%= pages.name %></td>
-                                        <td><%= pages.codeHtml %></td>
-                                        <td><a href="admin/pages/<%= pages.id %>">delete</a></td>
-                                    </tr>
-                                    <% }) %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-
+    <div class="col-4 p-0 m-0 text-center text-white">
+        <div id="pages">
+            <table id="pagestable">
+                <tr>
+                    <th>Name</th>
+                    <th>Updated_at</th>
+                    <th>Created_at</th>
+                    <th>Delete</th>
+                </tr>
+                <tbody>
+                    <% pages.forEach( pages => { %>
+                    <tr>
+                        <td><%= pages.name %></td>
+                        <td><%= pages.updated_at %></td>
+                        <td><%= pages.created_at %></td>
+                        <td><a href="pages/delete/<%= pages.id %>">delete</a></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
         </div>
     </div>
-
-
-</body>
-
-</html>
+</div>
+<% include layouts/footer %>
