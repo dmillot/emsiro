@@ -1,8 +1,8 @@
 'use strict';
 
-var query = function querySQL(sql, conn, parameters = null) {
+var query = function querySQL(query_sql, db_connection, parameters = null) {
     return new Promise((resolve, reject) => {
-        conn.query(sql, parameters, (err, results) => {
+        db_connection.query(query_sql, parameters, (err, results) => {
             if (err)
                 return reject(err);
             resolve(results);

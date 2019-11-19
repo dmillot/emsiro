@@ -18,6 +18,7 @@ var favoryRouter = require('./routes/favory');
 var aboutRouter = require('./routes/about');
 var disconnectRouter = require ('./routes/auth/disconnect');
 var pageEditorRouter = require ('./routes/pageEditor');
+var pageManageRouter = require ('./routes/admin/pages');
 
 
 var app = express();
@@ -51,6 +52,7 @@ app.use('/favory', favoryRouter);
 app.use('/about', aboutRouter);
 app.use('/disconnect',disconnectRouter);
 app.use('/pageEditor', pageEditorRouter);
+app.use('/pages',pageManageRouter);
 
 
 
