@@ -11,13 +11,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 var adminRouter = require('./routes/admin/admin.js');
-var loginRouter = require('./routes/auth/login');
-var registerRouter = require('./routes/auth/register');
 var listingRouter = require('./routes/listing');
 var favoryRouter = require('./routes/favory');
 var aboutRouter = require('./routes/about');
-var disconnectRouter = require ('./routes/auth/disconnect');
 var pageEditorRouter = require ('./routes/pageEditor');
+var pageManageRouter = require ('./routes/admin/pages');
 
 
 var app = express();
@@ -38,21 +36,24 @@ app.use(session({
   resave : true
 }));
 
+// session middleware
+app.use(function (req, res, next) {
+  // variable locals.session will be available on all pages
+  res.locals.session = req.session.userId;
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/admin', adminRouter);
-app.use('/login', loginRouter);
-app.use('/signup', registerRouter);
 app.use('/listing', listingRouter);
 app.use('/favory', favoryRouter);
 app.use('/about', aboutRouter);
-app.use('/disconnect',disconnectRouter);
 app.use('/pageEditor', pageEditorRouter);
-
-
+app.use('/pages',pageManageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

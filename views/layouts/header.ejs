@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/4p6anidd0wy5a6ii2c523w1nswg3umbct6ror8msx1od2kh7/tinymce/5/tinymce.min.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="/javascripts/main.js"></script>
 </head>
 
 <body>
@@ -38,11 +43,12 @@
                     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-item nav-link" href="about">About</a>
-                            <% if (!locals.session){ %><a class="nav-item nav-link deco"
-                                href="signup">Sign up</a>
-                            <a class="nav-item nav-link " href="login">Login</a>
-                            <% } else { %><a class="nav-item nav-link " href="disconnect">Disconnect</a><% } %>
-                            <a class="nav-item nav-link" href="pageEditor">Test</a>
+                            <a class="nav-item nav-link" href="admin">Administration</a>
+                            <% if (locals.session){ %>
+                            <a class="nav-item nav-link" href="pages">Page List</a>
+                            <a class="nav-item nav-link" href="pageEditor">Page Editor</a>
+                            <a class="nav-item nav-link" href="admin/disconnect">Disconnect</a>
+                            <% } %>
                             <a class="navbar-brand" href="favory">
                                 <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
                                     alt="">

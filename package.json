@@ -22,7 +22,8 @@
     "node-fetch": "^2.6.0",
     "password-hash": "^1.2.2",
     "popper": "^1.0.1",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "tinymce": "^5.1.2"
   },
   "devDependencies": {
     "gulp-sass": "^4.0.2",
