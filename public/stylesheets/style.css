@@ -7122,3 +7122,8 @@ table {
   height: 25px;
   background: #161816;
   cursor: pointer; }
+
+#divDescriptionOffer {
+  background-color: #f0f0f0;
+  border-bottom: black 6px solid;
+  border-radius: 20px; }

@@ -73,7 +73,6 @@
                     <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
                         onchange="myFunction()" />
                     <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
-
                     <script>
                         function myFunction() {
                             document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
@@ -100,7 +99,12 @@
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title"><%= data[i].rdfs_label[0].value%></h5>
-                        <a href="listing/detail" class="btn btn-primary">More details</a>
+                        <form action="listing/detail" method="post">
+                            <input type="text" name="offersId" id="offersId" value="<%= data[i].dc_identifier[0] %>"
+                                hidden="true">
+                            <input class="btn btn-primary" type="submit" value="View details" name="displayOffer"
+                                id="displayOffer" ;>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -120,11 +124,10 @@
 
 
                             <%for (var i = 0; i < data.length; i++) {%>
-            <% if (data.length != 0) {%>
-            var marker =
-                                        L.marker([<%=data[i].isLocatedAt[0].schema_geo[0].schema_latitude %>,<%=data[i].isLocatedAt[0].schema_geo[0].schema_longitude %>]).addTo(mymap);
-                                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress %> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
-                                            marker.bindPopup(popup);
+                 <% if (data.length != 0) {%>
+                    var marker = L.marker([<%=data[i].isLocatedAt[0].schema_geo[0].schema_latitude %>,<%=data[i].isLocatedAt[0].schema_geo[0].schema_longitude %>]).addTo(mymap);
+                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress %> <br><%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br><%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
+             marker.bindPopup(popup);
             <% }%>
             <% }%>
                         </script>
@@ -135,8 +138,10 @@
     </main>
 
     </div>
-
-
 </body>
+
+<script src="../public/javascripts/main.js"></script>
+
+
 
 </html>

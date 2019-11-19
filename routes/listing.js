@@ -13,6 +13,7 @@ router.get("/description", function(req, res, next) {
 });
 
 
+
 router.get("/detail", function(req, res, next) {
   console.log();
   var dataString = JSON.stringify({
@@ -23,6 +24,7 @@ router.get("/detail", function(req, res, next) {
               { 
               results {
                 _uri,
+                dc_identifier,
                 rdfs_label {
                   value
                 },
@@ -79,15 +81,20 @@ router.get("/detail", function(req, res, next) {
     });
 });
 
-router.get("/", function(req, res, next) {
-  console.log("get");
+
+//send the content of the current item selected in the list
+router.post("/detail", function(req, res, next) {
+  console.log(req.body.offersId);
   var dataString = JSON.stringify({
     query: `
       
     { 
-      poi               { 
+      poi(filters: [{dc_identifier:{_eq:`+req.body.offersId+`}}]) 
+       
+              { 
               results {
                 _uri,
+                dc_identifier,
                 rdfs_label {
                   value
                 },
@@ -105,7 +112,90 @@ router.get("/", function(req, res, next) {
                   schema_address {
                     schema_streetAddress,
                     schema_postalCode,
-                    schema_addressLocality
+                    schema_addressLocality,
+
+                  },
+                  schema_geo{
+                    schema_latitude,
+                    schema_longitude
+                  }
+                },
+                hasDescription {
+                  shortDescription {
+                    value,
+                    lang
+                  },
+                  dc_description {
+                    lang,
+                    value
+                  }
+                      
+                }
+              }
+            }
+          }
+      
+          `
+  });
+  fetch("http://vps.cours-diiage.com:8080", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: dataString
+  })
+    .then(r => r.json())
+    .then(data => {
+      res.render("descriptionOffre", { data: data.data.poi.results });
+    });
+});
+
+
+
+
+
+//get the content
+router.get("/", function(req, res, next) {
+  console.log("get");
+  var dataString = JSON.stringify({
+    query: `
+      
+    { 
+      poi               { 
+              results {
+                _uri,
+                dc_identifier,
+                rdfs_label {
+                  value
+                },
+                 hasRepresentation{
+                
+                  ebucore_hasRelatedResource{
+                    ebucore_locator
+                  }
+                  } ,  
+                takesPlaceAt{
+                  startDate,
+                  endDate
+                },
+                isLocatedAt {
+                  schema_address {
+                    schema_streetAddress,
+                    schema_postalCode,
+                    schema_addressLocality,
+                    hasAddressCity{
+                      isPartOfDepartment{
+                        rdfs_label{
+                          value
+                        }
+                        isPartOfRegion{
+                          rdfs_label{
+                            value
+                          }
+                        }
+                      }
+                    }
                   },
                   schema_geo{
                     schema_latitude schema_longitude
@@ -142,6 +232,8 @@ router.get("/", function(req, res, next) {
     });
 });
 
+
+//get the content with filters
 router.post("/", function(req, res, next) {
   console.log("post");
 
@@ -187,6 +279,7 @@ router.post("/", function(req, res, next) {
                 
               results {
                 _uri,
+                dc_identifier,
                 rdf_type,
                 rdfs_label {
                   value
