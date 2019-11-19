@@ -36,6 +36,13 @@ app.use(session({
   resave : true
 }));
 
+// session middleware
+app.use(function (req, res, next) {
+  // variable locals.session will be available on all pages
+  res.locals.session = req.session.userId;
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
@@ -47,8 +54,6 @@ app.use('/favory', favoryRouter);
 app.use('/about', aboutRouter);
 app.use('/pageEditor', pageEditorRouter);
 app.use('/pages',pageManageRouter);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

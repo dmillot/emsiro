@@ -1,94 +1,40 @@
-<!doctype html>
+<% include layouts/header %>
 
-<html>
+<div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="col-3 p-0 m-0 text-white ">
 
-<head>
-    <title>Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
-<body>
-    <div class="container-fluid p-0 m-0 minheight-100">
-
-        <div id="background-image" class="position-absolute">
-
-            <img src="/images/background.jpg" alt="background image" />
-
+        <!-- ERROR MESSAGE -->
+        <% if (locals.message) { %>
+        <div class="alert alert-<%= locals.type %> alert-dismissible fade show" role="alert">
+            <%= locals.message %>
         </div>
+        <% } %>
 
-        <div id="color-filter" class="position-absolute"></div>
+        <h1><span class="fa fa-sign-in"></span> Login</h1>
 
-        <main class="d-flex flex-column minheight-100">
+        <!-- LOGIN FORM -->
+        <form action="" method="post" class="was-validated">
 
-            <div class="row w-100 p-0 m-0">
-
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-
-                    <a class="navbar-brand" href="/">
-                        <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="about">About</a>
-                            <a class="nav-item nav-link" href="signup">Sign up</a>
-                            <a class="nav-item nav-link" href="login">Login</a>
-
-                            <a class="navbar-brand" href="favory">
-                                <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
-                                    alt="">
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control " name="username" required="required">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" required="required">
             </div>
 
-            <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
-                <div class="col-3 p-0 m-0 text-white ">
+            <button type="submit" class="btn btn-custom">Login</button>
+        </form>
 
-                    <!-- ERROR MESSAGE -->
-                    <% if (locals.message) { %>
-                    <div class="alert alert-<%= locals.type %> alert-dismissible fade show" role="alert">
-                        <%= locals.message %>
-                    </div>
-                    <% } %>
+        <hr>
 
-                    <h1><span class="fa fa-sign-in"></span> Login</h1>
-
-                    <!-- LOGIN FORM -->
-                    <form action="" method="post" class="was-validated">
-
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control " name="username" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" required="required">
-                        </div>
-
-                        <button type="submit" class="btn btn-custom">Login</button>
-                    </form>
-
-                    <hr>
-
-                    <p>Need an account? <a class="a-custom" href="/signup">Signup</a></p>
-                    <p>Or go <a class="a-custom" href="/">home</a></p>
+        <p>Need an account? <a class="a-custom" href="register">Signup</a></p>
+        <p>Or go <a class="a-custom" href="/">home</a></p>
 
 
-
-                </div>
-            </div>
-
-        </main>
 
     </div>
-</body>
+</div>
 
-</html>
+<% include layouts/footer %>

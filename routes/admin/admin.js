@@ -71,7 +71,6 @@ router.post('/login', function (req, res, next) {
         .then(rows => {
             if (passwordHash.verify(req.body.password, rows[0].password)) {
                 req.session.userId = rows[0].id;
-                console.log('ok');
                 return res.redirect('/admin');
             }
 
