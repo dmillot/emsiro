@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
     if (req.session.userId != null) {
 
         var usersList = [];
-        var queryGetAllUsers = 'SELECT id, name, email FROM user';
+        var queryGetAllUsers = 'SELECT id, name, email, confirmInscription FROM user';
 
         const promise = query(queryGetAllUsers, conn);
 
@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
 
                 if (rows.length > 0) {
                     rows.forEach(user => {
-                        usersList.push({ id: user.id, name: user.name, email: user.email });
+                        usersList.push({ id: user.id, name: user.name, email: user.email, confirmInscription: user.confirmInscription });
                     })
                 }
 
@@ -139,7 +139,35 @@ router.get('/delete/:id', function (req, res, next) {
     conn.query(queryDeleteUser, function (err, result) {
         if (err) throw err;
     });
+    res.redirect('/admin');
 });
+
+router.get('/confirm/:id', function (req, res, next) {
+    var usersList = [];
+
+    var queryGetAllUsers = 'SELECT id, name, email, confirmInscription FROM user';
+    var queryConfirmUser = 'UPDATE user SET confirmInscription = 1 WHERE user.id=' + req.params.id;
+
+    const promise = query(queryGetAllUsers, conn);
+
+    promise
+        .then(rows => {
+            if (rows.length > 0) {
+                rows.forEach(user => {
+                    usersList.push({ id: user.id, name: user.name, email: user.email, confirmInscription: user.confirmInscription });
+                })
+            }
+
+            res.render('panelAdmin', { users: usersList });
+        });
+
+    conn.query(queryConfirmUser, function (err, result) {
+        if (err) throw err; 
+    });
+    res.redirect('/admin');
+});
+
+
 
 
 module.exports = router;

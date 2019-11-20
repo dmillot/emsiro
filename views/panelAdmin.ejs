@@ -2,20 +2,31 @@
 
 <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
 
-    <div class="col-3 p-0 m-0 text-center text-white">
+    <div class="col-5 p-0 m-0 text-center text-white">
         <div id="userTable">
             <table id="usertable">
                 <tr>
                     <th>Nom</th>
                     <th>Email</th>
+                    <th>Confirm Inscription</th>
                     <th>Supprimer</th>
+                    
                 </tr>
                 <tbody>
                     <% users.forEach( user => { %>
                     <tr>
                         <td><%= user.name %></td>
                         <td><%= user.email %></td>
-                        <td><a href="delete/<%= user.id %>">delete</a></td>
+                        <%if (user.confirmInscription == 0) { %>
+                            
+                            <td><a href="admin/confirm/<%= user.id %>">confirm</a></td>
+                        <% }else{  %>
+                            <td>Done</td>
+                            <%} %>
+                        
+                       
+                        <td><a href="admin/delete/<%= user.id %>">delete</a></td>
+                       
                     </tr>
                     <% }) %>
                 </tbody>
