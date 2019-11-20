@@ -104,10 +104,10 @@ router.post('/register', function (req, res, next) {
         conn.query(queryCreateUser, parameters, function (err, result) {
             if (err) throw err;
             if (result.affectedRows == 1)
-                return res.redirect('admin/login', { message: "User Registration Successful! Please Login.", type: 'success' })
+                return res.render('login', { message: "User Registration Successful! Please Login.", type: 'success' })
         });
     } catch (err) {
-        return res.redirect('admin/login', { message: err, type: 'danger' })
+        return res.render('login', { message: err, type: 'danger' })
     }
 
 });
