@@ -7,12 +7,17 @@
             <div class="form-group col-md-4">
 
                 <div id="divForm">
-                    <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
-                        onchange="myFunction()"/>
+                    <div class="divForm2">
+                        <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=40 value="" onchange="myFunction()"/>
+                    </div>
+                    <div class="divForm2">
+                        <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
+                    </div>
+                    <div class="divForm">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                    </div>
                         
-                    <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
-                    <input type="submit" class="btn btn-primary" value="Search">
-                    <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
+                    <p>Number of markers to display : <span id="nbOfPoint"></span></p>
 
                 </div>
             </div>
