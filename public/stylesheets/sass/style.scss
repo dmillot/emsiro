@@ -98,7 +98,7 @@ table {
 
 .sliderPoi {
   -webkit-appearance: none;
-  width: 25%;
+  width: 75%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
@@ -121,7 +121,7 @@ table {
 }
 
 .sliderPoi::-moz-range-thumb {
-  width: 75px;
+  width: 25px;
   height: 25px;
   background: rgb(0, 123, 255);
   cursor: pointer;
