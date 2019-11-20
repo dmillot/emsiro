@@ -3,7 +3,7 @@ var router = express.Router();
 var conn = require('../database');
 
 router.get('/', function(req, res, next) {
-  res.render('pageEditor', { title: 'Page Editor'});
+  res.render('PageEditor', { title: 'Page Editor'});
 });
 
 router.post('/', function(req, res, next) {
