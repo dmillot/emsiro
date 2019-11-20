@@ -6,3 +6,7 @@ output.innerHTML = slider.value;
 slider.oninput = function(){
     output.innerHTML = this.value;
 }
+
+function myFunction() {
+    document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
+}
