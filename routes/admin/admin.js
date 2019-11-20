@@ -37,6 +37,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
+    console.log("login route : " + res.locals.message);
     if (req.session.userId != null) {
         return res.redirect('/admin');
     }
@@ -104,7 +105,10 @@ router.post('/register', function (req, res, next) {
         conn.query(queryCreateUser, parameters, function (err, result) {
             if (err) throw err;
             if (result.affectedRows == 1)
-                return res.render('login', { message: "User Registration Successful! Please Login.", type: 'success' })
+                res.locals.message = "User Registration Successful! Please Login.";
+                res.locals.type = "success";
+                console.log("admin route : " + res.locals.message);
+                return res.redirect('/admin/login');
         });
     } catch (err) {
         return res.render('login', { message: err, type: 'danger' })
