@@ -7118,7 +7118,7 @@ table {
   cursor: pointer; }
 
 .sliderPoi::-moz-range-thumb {
-  width: 25px;
+  width: 75px;
   height: 25px;
   background: #007bff;
   cursor: pointer; }
