@@ -13,7 +13,7 @@ try {
     });
 
 } catch (err) {
-    console.log(err);
+    console.log("Database error. error : " + err);
 }
 
 
