@@ -1,32 +1,29 @@
 <% include layouts/header %>
 
 <div class="row p-0 m-0 flex-grow-1 d-flex justify-content-center align-items-center">
-    <div class="col-8 p-0 m-0 text-center" id="divDescriptionOffer">
+    <div class="col-8 p-0 m-0 text-center p-2" id="divDescriptionOffer">
 
 
-
-        <h5><%=data[0].rdfs_label[0].value%></h5>
-        <div class="text-left pl-3">
-            <p>Postal code: <%=data[0].isLocatedAt[0].schema_address[0].schema_postalCode%></p>
-            <p>Locality: <%=data[0].isLocatedAt[0].schema_address[0].schema_addressLocality%></p>
-            <%if(typeof(data.hasAdministrativeContact) != 'undefined') {%>
-            <p>Phone: <%=data[0].hasAdministrativeContact[0].schema_telephone%></p>
-            <%} else {%>
-            <p>No phone number</p>
-            <%}%>                        
-                    </div>
-                    <%if(typeof(data.hasDescription) != 'undefined'){%>
-            <%if(typeof(data.hasDescription[0].shortDescription) != 'undefined'){%>
-            <p>Description: <%=data[0].hasDescription[0].shortDescription[0].value%></p>
-            <%}} else {%>
-            <p>No description available</p>
-            <%}%>
-
-
+            <!-- display the elements from the query posted after selecting an item in the list of events -->
+            <h5><%=data[0].rdfs_label[0].value%></h5>
+                <div class="text-left pl-3">
+                    <p>Postal code: <%=data[0].isLocatedAt[0].schema_address[0].schema_postalCode%></p>
+                    <p>Locality: <%=data[0].isLocatedAt[0].schema_address[0].schema_addressLocality%></p>
+                    <!-- if the array isn't in the VPS -->
+                                            
                 </div>
-            </div>
-        </main>
-    </div>
+                 <!-- if the array isn't in the VPS -->
+                 <% for(var i =0; i<data.length; i++) {%>
+                       
+                        <% if(data[i].hasDescription.length != 0) {%>
+                            
+                            <%= data[i].hasDescription[0].shortDescription[0].value%>
+                      
+                            <%}%>                                          
+                           
+                        <%}%>
+                       
+    </div>   
 </div>
 
 <% include layouts/footer %>
