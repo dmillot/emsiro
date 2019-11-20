@@ -12,18 +12,17 @@ router.get("/description", function(req, res, next) {
   res.render("listing");
 });
 
-
-
-
-
 //send the content of the current item selected in the list
 router.post("/detail", function(req, res, next) {
   console.log(req.body.offersId);
   var dataString = JSON.stringify({
-    query: `
+    query:
+      `
       
     { 
-      poi(filters: [{dc_identifier:{_eq:`+req.body.offersId+`}}]) 
+      poi(filters: [{dc_identifier:{_eq:` +
+      req.body.offersId +
+      `}}]) 
        
               { 
               results {
@@ -84,10 +83,6 @@ router.post("/detail", function(req, res, next) {
       res.render("descriptionOffre", { data: data.data.poi.results });
     });
 });
-
-
-
-
 
 //get the content
 router.get("/", function(req, res, next) {
@@ -178,7 +173,6 @@ router.get("/", function(req, res, next) {
     });
 });
 
-
 //get the content with filters
 router.post("/", function(req, res, next) {
   console.log(req.body.searchBar);
@@ -196,7 +190,9 @@ router.post("/", function(req, res, next) {
       ` ,filters:[{
         isLocatedAt: {
           schema_address:{
-            schema_addressLocality:{_in:[`+req.body.searchBar+`]} 
+            schema_addressLocality:{_in:[` +
+      req.body.searchBar +
+      `]} 
           }
         }
       },

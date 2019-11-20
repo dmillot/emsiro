@@ -61,10 +61,14 @@
 
 
                     <h5><%=data[0].rdfs_label[0].value%></h5>
-                    <div class="text-left">
-                        <p>Code postal: <%=data[0].isLocatedAt[0].schema_address[0].schema_postalCode%></p>
-                        <p>Commune: <%=data[0].isLocatedAt[0].schema_address[0].schema_addressLocality%></p>
-
+                    <div class="text-left pl-3">
+                        <p>Postal code: <%=data[0].isLocatedAt[0].schema_address[0].schema_postalCode%></p>
+                        <p>Locality: <%=data[0].isLocatedAt[0].schema_address[0].schema_addressLocality%></p>
+                        <%if(typeof(data.hasAdministrativeContact) != 'undefined') {%>
+                            <p>Phone: <%=data[0].hasAdministrativeContact[0].schema_telephone%></p>
+                        <%} else {%>
+                            <p>No phone number</p>
+                        <%}%>                        
                     </div>
                     <%if(typeof(data.hasDescription) != 'undefined'){%>
                     <%if(typeof(data.hasDescription[0].shortDescription) != 'undefined'){%>
