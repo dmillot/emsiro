@@ -8,5 +8,5 @@ slider.oninput = function(){
 }
 
 function myFunction() {
-    document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
+    document.getElementById("nbOfPoint").innerHTML = document.getElementById("sliderPoi").value;
 }

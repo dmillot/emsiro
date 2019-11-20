@@ -3,141 +3,132 @@
 $custom-color: #9bd2e5;
 
 .minheight-100 {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 #background-image {
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-    filter: grayscale(100%);
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+  filter: grayscale(100%);
 }
 
 #background-image img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #color-filter {
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-color: #f08700;
-    opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-color: #f08700;
+  opacity: 0.4;
 }
 
 main {
-    z-index: 1001;
+  z-index: 1001;
 }
 
 .btn-custom {
-    background-color: $custom-color !important;
-    color: #fff !important;
+  background-color: $custom-color !important;
+  color: #fff !important;
 }
 
 #mapid {
-    height: 100%;
+  height: 100%;
 }
 
-  
-#divMap{
-      width: 800px;
+#divMap {
+  width: 800px;
 }
-  
-#offerDiv{
-      background-color: rgb(221, 217, 255);
-      height: 800px;
+
+#offerDiv {
+  background-color: rgb(221, 217, 255);
+  height: 800px;
 }
-  
-#divDescription{
-      margin-top: 5%;
-      background-color: white;
-      height: 600px;
-      width: 1200px;
+
+#divDescription {
+  margin-top: 5%;
+  background-color: white;
+  height: 600px;
+  width: 1200px;
 }
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-  
-
-.a-custom{
-    color : $custom-color;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-#imgLieu{
-    height: 250px;
+.a-custom {
+  color: $custom-color;
 }
 
-
-#divList{
-   overflow: scroll;
-   max-height: 100vh;
+#imgLieu {
+  height: 250px;
 }
 
-.divListingItems{
-    border-left: 6px solid;
+#divList {
+  overflow: scroll;
+  max-height: 100vh;
 }
 
-
-#divCont{
-    margin-top: 20%;
+.divListingItems {
+  border-left: 6px solid;
 }
 
-#divContainerListing{
-    position: fixed;
-    bottom: 0;
-    top: 10%;
-    right: 0;
-    left: 0;
+#divCont {
+  margin-top: 20%;
 }
 
-#divForm{
-    background-color: white;
-    padding-top: 10px;
-    text-align: center;
+#divContainerListing {
+  position: fixed;
+  bottom: 0;
+  top: 10%;
+  right: 0;
+  left: 0;
 }
 
+#divForm {
+  background-color: white;
+  padding-top: 10px;
+  text-align: center;
+}
 
 .sliderPoi {
-    -webkit-appearance: none;
-    width: 50%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  -webkit-appearance: none;
+  width: 25%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
-  
+
 .sliderPoi:hover {
-    opacity: 1;
+  opacity: 1;
 }
-  
+
 .sliderPoi::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: rgb(37, 37, 37);
-    cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: rgb(37, 37, 37);
+  cursor: pointer;
 }
-  
+
 .sliderPoi::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: rgb(22, 24, 22);
-    cursor: pointer;
-  }
+  width: 25px;
+  height: 25px;
+  background: rgb(22, 24, 22);
+  cursor: pointer;
+}
 
-
-#divDescriptionOffer{
+#divDescriptionOffer {
   background-color: rgb(240, 240, 240);
   border-bottom: black 6px solid;
   border-radius: 20px;
 }
-
-
-
