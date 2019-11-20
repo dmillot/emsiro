@@ -14,72 +14,6 @@ router.get("/description", function(req, res, next) {
 
 
 
-router.get("/detail", function(req, res, next) {
-  console.log();
-  var dataString = JSON.stringify({
-    query: `
-      
-    { 
-      poi 
-              { 
-              results {
-                _uri,
-                dc_identifier,
-                rdfs_label {
-                  value
-                },
-                 hasRepresentation{
-                
-                  ebucore_hasRelatedResource{
-                    ebucore_locator
-                  }
-                  } ,  
-                takesPlaceAt{
-                  startDate,
-                  endDate
-                },
-                isLocatedAt {
-                  schema_address {
-                    schema_streetAddress,
-                    schema_postalCode,
-                    schema_addressLocality,
-
-                  },
-                  schema_geo{
-                    schema_latitude,
-                    schema_longitude
-                  }
-                },
-                hasDescription {
-                  shortDescription {
-                    value,
-                    lang
-                  },
-                  dc_description {
-                    lang,
-                    value
-                  }
-                      
-                }
-              }
-            }
-          }
-      
-          `
-  });
-  fetch("http://vps.cours-diiage.com:8080", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: dataString
-  })
-    .then(r => r.json())
-    .then(data => {
-      res.render("descriptionOffre", { data: data.data.poi.results });
-    });
-});
 
 
 //send the content of the current item selected in the list
@@ -162,10 +96,34 @@ router.get("/", function(req, res, next) {
     query: `
       
     { 
-      poi               { 
+      poi (
+       filters:[
+      
+      {
+      rdf_type: {_in: [
+          "https://www.datatourisme.gouv.fr/ontology/core#Festival",               
+          "https://www.datatourisme.gouv.fr/ontology/core#ShowEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CulturalEvent",   
+          "https://www.datatourisme.gouv.fr/ontology/core#EntertaimnentAndEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SportsEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#ChildrensEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SaleEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#TheaterEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CircusEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SocialEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#BusinessEvent"
+
+     
+          ] 
+        }
+    }]
+      ) 
+            { 
+                
               results {
                 _uri,
                 dc_identifier,
+                rdf_type,
                 rdfs_label {
                   value
                 },
@@ -183,19 +141,7 @@ router.get("/", function(req, res, next) {
                   schema_address {
                     schema_streetAddress,
                     schema_postalCode,
-                    schema_addressLocality,
-                    hasAddressCity{
-                      isPartOfDepartment{
-                        rdfs_label{
-                          value
-                        }
-                        isPartOfRegion{
-                          rdfs_label{
-                            value
-                          }
-                        }
-                      }
-                    }
+                    schema_addressLocality
                   },
                   schema_geo{
                     schema_latitude schema_longitude
@@ -214,7 +160,7 @@ router.get("/", function(req, res, next) {
                 }
               }
             }
-          }
+          } 
       
           `
   });
@@ -235,7 +181,7 @@ router.get("/", function(req, res, next) {
 
 //get the content with filters
 router.post("/", function(req, res, next) {
-  console.log("post");
+  console.log(req.body.searchBar);
 
   console.log(req.body.sliderPoi);
 
@@ -248,12 +194,11 @@ router.post("/", function(req, res, next) {
       poi (size:` +
       req.body.sliderPoi +
       ` ,filters:[{
-        
         isLocatedAt: {
           schema_address:{
-            schema_addressLocality:{_in:["Brest"]} 
+            schema_addressLocality:{_in:[`+req.body.searchBar+`]} 
           }
-        }       
+        }
       },
       
       {

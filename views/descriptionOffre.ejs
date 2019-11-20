@@ -67,11 +67,11 @@
 
                     </div>
                     <%if(typeof(data.hasDescription) != 'undefined'){%>
-                    <%if(typeof(data[0].hasDescription[0].shortDescription) != 'undefined'){%>
-
-                    <p><%=data[0].hasDescription[0].shortDescription[0].value%></p>
-                    <%}%>
-                        <%}%>
+                    <%if(typeof(data.hasDescription[0].shortDescription) != 'undefined'){%>
+                    <p>Description: <%=data[0].hasDescription[0].shortDescription[0].value%></p>
+                    <%}} else {%>
+                        <p>No description available</p>
+                       <%}%>
 
 
                 </div>

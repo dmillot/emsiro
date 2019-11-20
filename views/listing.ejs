@@ -12,6 +12,8 @@
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
 
+        <script src="../public/javascripts/main.js"></script>
+
 </head>
 
 <body>
@@ -65,27 +67,25 @@
     </div>
     <form method="post" action="/listing" id="form">
 
-        <div class="flex-grow-1 d-flex mt-3">
+        <div class="flex-grow-1 d-flex mt-1">
 
             <div class="form-group col-md-4">
 
                 <div id="divForm">
                     <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
-                        onchange="myFunction()" />
+                        onchange="myFunction()"/>
+                        
+                    <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
+                    <input type="submit" class="btn btn-primary" value="Search">
                     <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
                     <script>
-                        function myFunction() {
-                            document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
-                        }
-                        $(myFunction);
-                        document.getElementById("sliderPoi").onmouseup = function () {
-                            document.getElementById("form").submit();
-                        }
+                     
+function myFunction() {
+    document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
+  }
                     </script>
 
                 </div>
-
-
             </div>
 
 
@@ -130,7 +130,7 @@
              marker.bindPopup(popup);
             <% }%>
             <% }%>
-                        </script>
+            </script>
         </div>
     </div>
     </div>
@@ -139,8 +139,6 @@
 
     </div>
 </body>
-
-<script src="../public/javascripts/main.js"></script>
 
 
 
