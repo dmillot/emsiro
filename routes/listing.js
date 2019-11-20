@@ -1,29 +1,23 @@
 var express = require("express");
 var router = express.Router();
 var fetch = require("node-fetch");
-var types = require("../public/javascripts/type");
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('listing', { title: 'Express', elements: [{ id: 1, value: 'premier' },{ id: 2, value: 'second' }] });
-// });
 
 router.get("/description", function(req, res, next) {
   res.render("listing");
 });
 
-
-
-
-
-//send the content of the current item selected in the list
+//post the content of the selected item in the list and load the descriptionOffre view
 router.post("/detail", function(req, res, next) {
   console.log(req.body.offersId);
+  //json format
   var dataString = JSON.stringify({
-    query: `
+    //the query has a filter to choose the selected item
+    query:
+      `
       
     { 
-      poi(filters: [{dc_identifier:{_eq:`+req.body.offersId+`}}]) 
+      poi(filters: [{dc_identifier:{_eq:` + req.body.offersId + `}}]) 
        
               { 
               results {
@@ -71,6 +65,7 @@ router.post("/detail", function(req, res, next) {
       
           `
   });
+  //call the VPS to post data and load the view with the posted data
   fetch("http://vps.cours-diiage.com:8080", {
     method: "POST",
     headers: {
@@ -85,14 +80,12 @@ router.post("/detail", function(req, res, next) {
     });
 });
 
-
-
-
-
-//get the content
+//get the content of the list and load the listing view
 router.get("/", function(req, res, next) {
   console.log("get");
+  //JSON format
   var dataString = JSON.stringify({
+    //the query has a filter to choose types
     query: `
       
     { 
@@ -164,6 +157,7 @@ router.get("/", function(req, res, next) {
       
           `
   });
+  //call the VPS to get data and load the view with it
   fetch("http://vps.cours-diiage.com:8080", {
     method: "POST",
     headers: {
@@ -178,15 +172,14 @@ router.get("/", function(req, res, next) {
     });
 });
 
-
-//get the content with filters
+//post the content of the list and load the listing view
 router.post("/", function(req, res, next) {
   console.log(req.body.searchBar);
 
   console.log(req.body.sliderPoi);
-
+  //JSON format
   var dataString = JSON.stringify({
-    // ` + res.locals.sliderPOI + `
+    //the query has a filter to choose types
     query:
       `
       
@@ -196,7 +189,9 @@ router.post("/", function(req, res, next) {
       ` ,filters:[{
         isLocatedAt: {
           schema_address:{
-            schema_addressLocality:{_in:[`+req.body.searchBar+`]} 
+            schema_addressLocality:{_in:[` +
+      req.body.searchBar +
+      `]} 
           }
         }
       },
@@ -266,6 +261,7 @@ router.post("/", function(req, res, next) {
           
           `
   });
+  //call the VPS to post data and load the view with the posted data
   fetch("http://vps.cours-diiage.com:8080", {
     method: "POST",
     headers: {
@@ -278,7 +274,6 @@ router.post("/", function(req, res, next) {
     .then(data => {
       res.render("listing", {
         data: data.data.poi.results
-        // , type: types.allType()
       });
     });
 });

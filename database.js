@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 try {
 
-    //db connection
+    //database connection
     var connection = mysql.createConnection({
         database: 'web1',
         host: "nico.cours-diiage.com",
@@ -13,7 +13,7 @@ try {
     });
 
 } catch (err) {
-    console.log("Database error. error : " + err);
+    console.log("Database error. error: " + err);
 }
 
 

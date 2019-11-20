@@ -10,7 +10,7 @@
                     <th>Email</th>
                     <th>Confirm Inscription</th>
                     <th>Supprimer</th>
-                    
+
                 </tr>
                 <tbody>
                     <% users.forEach( user => { %>
@@ -18,15 +18,15 @@
                         <td><%= user.name %></td>
                         <td><%= user.email %></td>
                         <%if (user.confirmInscription == 0) { %>
-                            
-                            <td><a href="admin/confirm/<%= user.id %>">confirm</a></td>
+
+                        <td><a href="admin/confirm/<%= user.id %>">confirm</a></td>
                         <% }else{  %>
-                            <td>Done</td>
-                            <%} %>
-                        
-                       
+                        <td>Done</td>
+                        <%} %>
+
+
                         <td><a href="admin/delete/<%= user.id %>">delete</a></td>
-                       
+
                     </tr>
                     <% }) %>
                 </tbody>

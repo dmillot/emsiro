@@ -8,6 +8,7 @@ slider.oninput = function(){
     output.innerHTML = this.value;
 }
 
+//get the slider id and display the selected value 
 function myFunction() {
     document.getElementById("nbOfPoint").innerHTML = document.getElementById("sliderPoi").value;
 }

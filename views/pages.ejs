@@ -12,12 +12,12 @@
                     <th>Delete</th>
                 </tr>
                 <tbody>
-                    <% pages.forEach( pages => { %>
+                    <% pages.forEach( page => { %>
                     <tr>
-                        <td><%= pages.name %></td>
-                        <td><%= pages.updated_at %></td>
-                        <td><%= pages.created_at %></td>
-                        <td><a href="pages/delete/<%= pages.id %>">delete</a></td>
+                        <td><%= page.name %></td>
+                        <td><%= page.updated_at %></td>
+                        <td><%= page.created_at %></td>
+                        <td><a href="pages/delete/<%= page.id %>">delete</a></td>
                     </tr>
                     <% }) %>
                 </tbody>
