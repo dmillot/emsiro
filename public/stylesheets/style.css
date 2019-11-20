@@ -7094,7 +7094,8 @@ table {
 #divForm {
   background-color: white;
   padding-top: 10px;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 20px; }
 
 .sliderPoi {
   -webkit-appearance: none;
@@ -7122,3 +7123,8 @@ table {
   height: 25px;
   background: #161816;
   cursor: pointer; }
+
+#divDescriptionOffer {
+  background-color: #f0f0f0;
+  border-bottom: black 6px solid;
+  border-radius: 20px; }

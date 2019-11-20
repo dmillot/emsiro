@@ -13,16 +13,22 @@ router.get("/description", function(req, res, next) {
 });
 
 
-router.get("/detail", function(req, res, next) {
-  console.log();
+
+
+
+//send the content of the current item selected in the list
+router.post("/detail", function(req, res, next) {
+  console.log(req.body.offersId);
   var dataString = JSON.stringify({
     query: `
       
     { 
-      poi 
+      poi(filters: [{dc_identifier:{_eq:`+req.body.offersId+`}}]) 
+       
               { 
               results {
                 _uri,
+                dc_identifier,
                 rdfs_label {
                   value
                 },
@@ -79,15 +85,45 @@ router.get("/detail", function(req, res, next) {
     });
 });
 
+
+
+
+
+//get the content
 router.get("/", function(req, res, next) {
   console.log("get");
   var dataString = JSON.stringify({
     query: `
       
     { 
-      poi               { 
+      poi (
+       filters:[
+      
+      {
+      rdf_type: {_in: [
+          "https://www.datatourisme.gouv.fr/ontology/core#Festival",               
+          "https://www.datatourisme.gouv.fr/ontology/core#ShowEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CulturalEvent",   
+          "https://www.datatourisme.gouv.fr/ontology/core#EntertaimnentAndEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SportsEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#ChildrensEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SaleEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#TheaterEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#CircusEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#SocialEvent",
+          "https://www.datatourisme.gouv.fr/ontology/core#BusinessEvent"
+
+     
+          ] 
+        }
+    }]
+      ) 
+            { 
+                
               results {
                 _uri,
+                dc_identifier,
+                rdf_type,
                 rdfs_label {
                   value
                 },
@@ -124,7 +160,7 @@ router.get("/", function(req, res, next) {
                 }
               }
             }
-          }
+          } 
       
           `
   });
@@ -142,6 +178,8 @@ router.get("/", function(req, res, next) {
     });
 });
 
+
+//get the content with filters
 router.post("/", function(req, res, next) {
   console.log(req.body.searchBar);
 
@@ -186,6 +224,7 @@ router.post("/", function(req, res, next) {
                 
               results {
                 _uri,
+                dc_identifier,
                 rdf_type,
                 rdfs_label {
                   value

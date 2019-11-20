@@ -1,71 +1,8 @@
-<!DOCTYPE html>
-<html>
+<% include layouts/header %>
 
-<head>
-    <title>Listing</title>
-    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-
-</head>
-
-<body>
-
-    <div class="container-fluid p-0 m-0" id="divCont">
-
-        <div id="background-image" class="position-absolute">
-
-            <img src="/images/background.jpg" alt="background image" />
-
-        </div>
-
-        <div id="color-filter" class="position-absolute"></div>
-
-        <main class="d-flex flex-column minheigh-10t0">
-
-            <div class="row w-100 p-0 m-0" id="nav">
-
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-
-                    <a class="navbar-brand" href="/">
-                        <img src="/images/logo.png" width="auto" height="30" class="d-inline-block align-top" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="about">About</a>
-                            <a class="nav-item nav-link" href="signup">Sign up</a>
-                            <a class="nav-item nav-link" href="login">Login</a>
-
-                        </div>
-
-                        <a class="nav-item nav-link" href="disconnect">Disconnect</a>
-
-                        <a class="navbar-brand" href="favory">
-                            <img src="/images/favoris.png" width="auto" height="30" class="d-inline-block align-top"
-                                alt="">
-                        </a>
-                    </div>
-
-            </div>
-            </nav>
-
-    </div>
-
-
-    </div>
     <form method="post" action="/listing" id="form">
 
-        <div class="flex-grow-1 d-flex mt-3">
+        <div class="flex-grow-1 d-flex mt-1">
 
             <div class="form-group col-md-4">
 
@@ -73,15 +10,9 @@
                     <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
                         onchange="myFunction()"/>
                         
-                    <input type="text" name="searchBar" placeholder="region" id="searchBar">
-                    <input type="submit" class="btn btn-primary" value="Rechercher">
+                    <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
+                    <input type="submit" class="btn btn-primary" value="Search">
                     <p>Number of markers to display : <span id="ex6SliderVal"></span></p>
-
-                    <script>
-                        function myFunction() {
-                            document.getElementById("ex6SliderVal").innerHTML = document.getElementById("sliderPoi").value;
-                        }
-                    </script>
 
                 </div>
             </div>
@@ -97,7 +28,12 @@
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title"><%= data[i].rdfs_label[0].value%></h5>
-                        <a href="listing/detail" class="btn btn-primary">More details</a>
+                        <form action="listing/detail" method="post">
+                            <input type="text" name="offersId" id="offersId" value="<%= data[i].dc_identifier[0] %>"
+                                hidden="true">
+                            <input class="btn btn-primary" type="submit" value="View details" name="displayOffer"
+                                id="displayOffer" ;>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -116,24 +52,16 @@
                             }).addTo(mymap);
 
 
-                            <%for (var i = 0; i < data.length; i++) {%>
-            <% if (data.length != 0) {%>
-            var marker =
-                                        L.marker([<%=data[i].isLocatedAt[0].schema_geo[0].schema_latitude %>,<%=data[i].isLocatedAt[0].schema_geo[0].schema_longitude %>]).addTo(mymap);
-                                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress %> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
-                                            marker.bindPopup(popup);
+                            <% for (var i = 0; i < data.length; i++) { %>
+                 <% if (data.length != 0) { %>
+                    var marker = L.marker([<%=data[i].isLocatedAt[0].schema_geo[0].schema_latitude %>,<%=data[i].isLocatedAt[0].schema_geo[0].schema_longitude %>]).addTo(mymap);
+                    var popup = L.popup().setContent("<%= data[i].rdfs_label[0].value%> <br> <%= data[i].isLocatedAt[0].schema_address[0].schema_streetAddress %> <br><%= data[i].isLocatedAt[0].schema_address[0].schema_addressLocality%> <br><%= data[i].isLocatedAt[0].schema_address[0].schema_postalCode%>");
+             marker.bindPopup(popup);
             <% }%>
             <% }%>
-                        </script>
+            </script>
         </div>
     </div>
     </div>
 
-    </main>
-
-    </div>
-
-
-</body>
-
-</html>
+<% include layouts/footer %>
