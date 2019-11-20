@@ -7114,13 +7114,13 @@ table {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #252525;
+  background: #007bff;
   cursor: pointer; }
 
 .sliderPoi::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #161816;
+  background: #007bff;
   cursor: pointer; }
 
 #divDescriptionOffer {
