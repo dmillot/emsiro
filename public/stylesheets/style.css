@@ -7098,7 +7098,7 @@ table {
 
 .sliderPoi {
   -webkit-appearance: none;
-  width: 25%;
+  width: 75%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
@@ -7127,3 +7127,9 @@ table {
   background-color: #f0f0f0;
   border-bottom: black 6px solid;
   border-radius: 20px; }
+
+.divForm2 {
+  background-color: white;
+  padding-top: 10px;
+  text-align: center;
+  float: left; }
