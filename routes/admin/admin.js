@@ -52,21 +52,24 @@ router.post('/login', function (req, res, next) {
     var queryUserExists = 'SELECT confirmInscription FROM user WHERE id = ? LIMIT 1';
     var queryCheckUserPassword = 'SELECT id, password FROM user WHERE id = ? LIMIT 1';
 
+    // create new promise with the query, the database connection and the username sent with the form
     const promise = query(queryFindUser, conn, [req.body.username]);
 
     promise
-        .then(rows => {
+        .then(rows => { // .then() is a method of processing the result after the operation is completed 
             if (rows.length > 0) {
                 userId = rows[0].id;
                 return query(queryUserExists, conn, [userId]);
             }
 
+            // if no user found with the username sent
             throw "This user doesn't exist.";
         })
         .then(rows => {
             if (rows[0].confirmInscription)
                 return query(queryCheckUserPassword, conn, [userId]);
 
+            // if the user registration isn't validated
             throw "Your registration has not been validated by an administrator.";
         })
         .then(rows => {
@@ -75,6 +78,7 @@ router.post('/login', function (req, res, next) {
                 return res.redirect('/admin');
             }
 
+            // if the password is incorrect
             throw "Incorrect username or password.";
         })
         .catch(err => {
