@@ -16,9 +16,11 @@
                  <% for(var i =0; i<data.length; i++) {%>
                        
                         <% if(data[i].hasDescription.length != 0) {%>
-                            
+                            <% if(data[i].hasDescription[0].shortDescription.length != 0) {%>
+                         
                             <%= data[i].hasDescription[0].shortDescription[0].value%>
                       
+                            <%}%>                                          
                             <%}%>                                          
                            
                         <%}%>
