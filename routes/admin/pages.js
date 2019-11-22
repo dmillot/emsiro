@@ -40,12 +40,12 @@ router.get('/', function (req, res, next) {
             }
 
             throw "No page found.";
-           
+
         })
-        .catch(err => {
+        .catch(function (err) {
             console.log(err);
-            res.render('pages',{
-                pages:pagesList
+            res.render('pages', {
+                pages: pagesList
             });
         })
 });
@@ -76,16 +76,18 @@ router.get('/delete/:id', function (req, res, next) {
                     });
                 });
 
-                return res.render('pages', {
-                    pages: pagesList
-                });
+                return res.redirect('/pages');
+
             }
 
             throw "No page found.";
         })
         .catch(err => {
             console.log(err);
+            return res.redirect('/pages');
         })
+
+    
 });
 
 module.exports = router;

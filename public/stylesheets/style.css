@@ -7098,7 +7098,7 @@ table {
 
 .sliderPoi {
   -webkit-appearance: none;
-  width: 25%;
+  width: 75%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
@@ -7114,16 +7114,22 @@ table {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #252525;
+  background: #007bff;
   cursor: pointer; }
 
 .sliderPoi::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #161816;
+  background: #007bff;
   cursor: pointer; }
 
 #divDescriptionOffer {
   background-color: #f0f0f0;
   border-bottom: black 6px solid;
   border-radius: 20px; }
+
+.divForm2 {
+  background-color: white;
+  padding-top: 10px;
+  text-align: center;
+  float: left; }

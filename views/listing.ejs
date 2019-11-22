@@ -6,11 +6,16 @@
             <div class="form-group col-md-4 mw-50">
 
                 <div id="divForm">
-                    <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=200 value=""
-                        onchange="myFunction()"/>
-                        
-                    <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
-                    <input type="submit" class="btn btn-primary" value="Search">
+                    <div class="divForm2">
+                        <input name="sliderPoi" id="sliderPoi" class="sliderPoi" type="range" min=1 max=40 value="" onchange="myFunction()"/>
+                    </div>
+                    <div class="divForm2">
+                        <input type="text" name="searchBar" placeholder="Commune" id="searchBar">
+                    </div>
+                    <div class="divForm">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                    </div>
+                    
                     <p>Number of markers to display : <span id="nbOfPoint"></span></p>
 
                 </div>
